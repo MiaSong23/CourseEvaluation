@@ -13,7 +13,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-
+// I process membership registration. After registering user information in the database, 
+// it automatically sends an email to the user's email and waits for authentication.
 	UserDAO userDAO = new UserDAO();
 	String userID = null;
 
@@ -49,7 +50,6 @@
 	
 
 	// 사용자에게 보낼 메시지를 기입합니다.
-
 	String host = "http://localhost:8080/Lecture_Evaluation/";
 	String from = "이메일 아이디";
 	String to = userDAO.getUserEmail(userID);

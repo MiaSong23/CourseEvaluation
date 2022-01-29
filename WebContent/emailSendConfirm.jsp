@@ -19,7 +19,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
+		<a class="navbar-brand" href="index.jsp">Course Evaluation</a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
         	<span class="navbar-toggler-icon"></span>
    		</button>
@@ -27,29 +27,29 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.jsp">메인</a>
+            <a class="nav-link" href="index.jsp">Main</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
-              회원 관리
+              Member
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdown">
-              <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+              <a class="dropdown-item" href="userLogout.jsp">Logout</a>
             </div>
           </li>
         </ul>
         <form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
-          <input type="text" name="search" class="form-control mr-sm-2" placeholder="내용을 입력하세요.">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+          <input type="text" name="search" class="form-control mr-sm-2" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
 
 	<div class="container">
 	    <div class="alert alert-warning mt-4" role="alert">
-		  이메일 주소 인증을 하셔야 이용 가능합니다. 인증 메일을 받지 못하셨나요?
+		  You must verify your email address to use it.
 		</div>
-		<a href="emailSendAction.jsp" class="btn btn-primary">인증 메일 다시 받기</a>
+		<a href="emailSendAction.jsp" class="btn btn-primary">Re-receipt your email.</a>
     </div>
 
     <footer class="bg-dark mt-4 p-5 text-center" style="color: #FFFFFF;">

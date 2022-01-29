@@ -14,6 +14,8 @@ public class SHA256 {
 			byte[] salt = "Hello! This is Salt.".getBytes();
 			digest.reset();
 			digest.update(salt);
+			//When generating hash data, it can make it more difficult for attackers with malicious purposes 
+			//to grasp the original data.
 
 			byte[] chars = digest.digest(input.getBytes("UTF-8"));
 

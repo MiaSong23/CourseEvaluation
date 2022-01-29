@@ -14,7 +14,7 @@
 	if(userID == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('로그인을 해주세요.');");
+		script.println("alert('Please Login');");
 		script.println("location.href = 'userLogin.jsp'");
 		script.println("</script>");
 		script.close();
@@ -51,7 +51,7 @@
 
 			lectureYear = Integer.parseInt(request.getParameter("lectureYear"));
 		} catch (Exception e) {
-			System.out.println("강의 연도 데이터 오류");
+			System.out.println("Error: lecture year");
 		}
 
 	}
@@ -98,7 +98,7 @@
 
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("alert('입력이 안 된 사항이 있습니다.');");
+		script.println("alert('Please fill up');");
 		script.println("history.back();");
 		script.println("</script>");
 
@@ -120,7 +120,7 @@
 
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('평가 등록에 실패했습니다.');");
+			script.println("alert('Fail to register');");
 			script.println("history.back();");
 			script.println("</script>");
 

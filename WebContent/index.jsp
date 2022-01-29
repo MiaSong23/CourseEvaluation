@@ -68,12 +68,12 @@
 	if(userID == null) {
 %>		            
 		            
-		            <a class="dropdown-item" href="userLogin.jsp">로그인</a>
-		            <a class="dropdown-item" href="userRegister.jsp">회원가입</a>
+		            <a class="dropdown-item" href="userLogin.jsp">Login</a>
+		            <a class="dropdown-item" href="userRegister.jsp">Sign-up</a>
 <%
 	} else {
 %>	            
-		            <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+		            <a class="dropdown-item" href="userLogout.jsp">Logout</a>
 <%
 	}
 %>
@@ -82,8 +82,8 @@
      	 </ul>
 
 	      <form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
-	        <input type="text" name="search" class="form-control mr-sm-2" placeholder="내용을 입력하세요.">
-	        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+	        <input type="text" name="search" class="form-control mr-sm-2" placeholder="Search">
+	        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 	      </form>
     	</div>
   	</nav>
@@ -107,7 +107,7 @@
     	<div class="card bg-light mt-3">
 			<div class="card-header bg-light">
 	        	<div class="row">
-					<div class="col-8 text-left">컴퓨터개론&nbsp;<small>나동빈</small></div>
+					<div class="col-8 text-left">Algorithm&nbsp;<small>Anne</small></div>
 					<div class="col-4 text-right">
           			종합 <span style="color: red;">A</span>
 					</div>

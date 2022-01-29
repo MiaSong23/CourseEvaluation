@@ -5,8 +5,10 @@
 <%@ page import="java.io.PrintWriter" %>
 <%
 	request.setCharacterEncoding("UTF-8");
+	
 	String userID = null;
 	String userPassword = null;
+	
 	if(request.getParameter("userID") != null){
 		userID = (String) request.getParameter("userID");
 	}

@@ -1,131 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="user.UserDTO"%>
+<%@ page import="user.UserDAO"%>
+<%@ page import="util.SHA256"%>
 <%@ page import="java.io.PrintWriter"%>
 
-<!doctype html>
-
-<html>
-
-  <head>
-
-    <title>강의평가 웹 사이트</title>
-
-    <meta charset="utf-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- 부트스트랩 CSS 추가하기 -->
-
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-
-    <!-- 커스텀 CSS 추가하기 -->
-
-    <link rel="stylesheet" href="./css/custom.css">
-
-  </head>
-
-  <body>
-
 <%
 
+	request.setCharacterEncoding("UTF-8");
 	String userID = null;
+	String userPassword = null;
+	String userEmail = null;
 
-	if(session.getAttribute("userID") != null) {
-
-		userID = (String) session.getAttribute("userID");
-
+	if(request.getParameter("userID") != null) {
+		userID = (String) request.getParameter("userID");
 	}
 
-	if(userID != null) {
+	if(request.getParameter("userPassword") != null) {
+		userPassword = (String) request.getParameter("userPassword");
+	}
 
+	if(request.getParameter("userEmail") != null) {
+		userEmail = (String) request.getParameter("userEmail");
+	}
+
+	if (userID == null || userPassword == null || userEmail == null) {
 		PrintWriter script = response.getWriter();
-
 		script.println("<script>");
-
-		script.println("alert('로그인이 된 상태입니다.');");
-
-		script.println("location.href = 'index.jsp'");
-
+		script.println("alert('Fill in the blank');");
+		script.println("history.back();");
 		script.println("</script>");
-
-		script.close();	
-
-	}
-
-%>	
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-      <a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-
-        <span class="navbar-toggler-icon"></span>
-
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbar">
-
-        <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item active">
-
-            <a class="nav-link" href="index.jsp">메인</a>
-
-          </li>
-
-          <li class="nav-item dropdown">
-
-            <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
-
-              회원 관리
-
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdown">
-
-<%
-
-	if(userID == null) {
-
-%>
-
-              <a class="dropdown-item" href="userLogin.jsp">로그인</a>
-
-              <a class="dropdown-item" href="userRegister.jsp">회원가입</a>
-
-<%
-
+		script.close();
 	} else {
 
-%>
+		UserDAO userDAO = new UserDAO();
 
-              <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+		int result = userDAO.join(new UserDTO(userID, userPassword, userEmail, SHA256.getSHA256(userEmail), false));
 
-<%
+		if (result == -1) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('ID is existed');");
+			script.println("history.back();");
+			script.println("</script>");
 
+			script.close();
+
+		} else {
+
+			session.setAttribute("userID", userID);
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("location.href = 'emailSendAction.jsp';");
+			script.println("</script>");
+			script.close();
+		}
 	}
 
 %>
-
-            </div>
-
-          </li>
-
-        </ul>
-
-        <form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
-
-          <input type="text" name="search" class="form-control mr-sm-2" placeholder="내용을 입력하세요.">
-
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-
-        </form>
-
-      </div>
-
-    </nav>
-
-
-
 
